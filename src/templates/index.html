@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Warkop Dodayy</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="navbar" role="banner">
+      <div class="navbar-container">
+        <h1 class="app-title">Warkop Dodayy</h1>
+        <nav role="navigation" aria-label="Main navigation">
+          <button class="hamburger-menu" id="hamburger-menu" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <ul class="nav-menu" id="nav-menu" role="menu">
+            <li role="none"><a href="/" role="menuitem">Home</a></li>
+            <li role="none"><a href="#" role="menuitem">Favorite</a></li>
+            <li role="none"><a href="#testimonials-section" role="menuitem">Testimoni</a></li>
+            <li role="none"><a href="https://portfolio-dody.vercel.app/" role="menuitem">About Us</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+      <section class="hero" aria-label="Hero section">
+        <div class="hero-element">Pesan Sekarang</div>
+      </section>
+
+      <section class="explore-section" aria-label="Restaurant list">
+        <h2>Explore Restaurant</h2>
+        <div class="restaurant-container" role="list"></div>
+      </section>
+
+      <section class="testimonials-section" id="testimonials-section" aria-label="Customer testimonials">
+        <h2>Testimoni</h2>
+        <div class="testimonials-container" role="list"></div>
+      </section>
+    </main>
+
+    <footer role="contentinfo">
+      <p>© 2024 - Warkop Dodayy</p>
+    </footer>
+
+    <script src="scripts/index.js"></script>
+  </body>
+</html>

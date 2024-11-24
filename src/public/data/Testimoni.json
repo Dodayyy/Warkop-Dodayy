@@ -1,0 +1,25 @@
+{
+  "testimonials": [
+    {
+      "id": "1",
+      "name": "Sarah Johnson",
+      "text": "The best dining experience I've had in years! The atmosphere is perfect and the food is incredible.",
+      "image": "https://picsum.photos/seed/sarah/200",
+      "rating": 5
+    },
+    {
+      "id": "2",
+      "name": "Michael Chen",
+      "text": "Amazing selection of restaurants with quick delivery. My go-to platform for food ordering!",
+      "image": "https://picsum.photos/seed/michael/200",
+      "rating": 5
+    },
+    {
+      "id": "3",
+      "name": "Emma Davis",
+      "text": "Great variety of cuisines and excellent customer service. Highly recommended!",
+      "image": "https://picsum.photos/seed/emma/200",
+      "rating": 5
+    }
+  ]
+}
