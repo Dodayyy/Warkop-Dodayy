@@ -3,51 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Discover great restaurants near you" />
+    <meta name="theme-color" content="#ff6b6b" />
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+    <link rel="icon" href="./restaurant.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="manifest" href="./app.webmanifest" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <title>Warkop Dodayy</title>
-    <link rel="stylesheet" href="styles/main.css" />
   </head>
   <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#mainContent" class="skip-link">Skip to content</a>
 
-    <header class="navbar" role="banner">
-      <div class="navbar-container">
-        <h1 class="app-title">Warkop Dodayy</h1>
-        <nav role="navigation" aria-label="Main navigation">
-          <button class="hamburger-menu" id="hamburger-menu" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-          <ul class="nav-menu" id="nav-menu" role="menu">
-            <li role="none"><a href="/" role="menuitem">Home</a></li>
-            <li role="none"><a href="#" role="menuitem">Favorite</a></li>
-            <li role="none"><a href="#testimonials-section" role="menuitem">Testimoni</a></li>
-            <li role="none"><a href="https://portfolio-dody.vercel.app/" role="menuitem">About Us</a></li>
+    <header class="app-bar">
+      <div class="app-bar-container">
+        <div class="app-bar__menu">
+          <button id="hamburgerButton" aria-label="navigation menu">☰</button>
+        </div>
+        <div class="app-bar__brand">
+          <h1>Warkop Dodayy</h1>
+        </div>
+        <nav id="navigationDrawer" class="app-bar__navigation">
+          <ul>
+            <li>
+              <a href="#/"><i class="fa-solid fa-home"></i>Home</a>
+            </li>
+            <li>
+              <a href="#/favorite"><i class="fa-solid fa-heart"></i>Favorite</a>
+            </li>
+            <li>
+              <a href="#"><i class="fa-solid fa-comment"></i>Testimoni</a>
+            </li>
+            <li>
+              <a href="https://portfolio-dody.vercel.app/" target="_blank" rel="noopener"> <i class="fa-solid fa-user"></i>About Us </a>
+            </li>
           </ul>
         </nav>
       </div>
     </header>
 
-    <main id="main-content" tabindex="-1">
-      <section class="hero" aria-label="Hero section">
-        <div class="hero-element">Pesan Sekarang</div>
-      </section>
-
-      <section class="explore-section" aria-label="Restaurant list">
-        <h2>Explore Restaurant</h2>
-        <div class="restaurant-container" role="list"></div>
-      </section>
-
-      <section class="testimonials-section" id="testimonials-section" aria-label="Customer testimonials">
-        <h2>Testimoni</h2>
-        <div class="testimonials-container" role="list"></div>
-      </section>
-    </main>
-
-    <footer role="contentinfo">
-      <p>© 2024 - Warkop Dodayy</p>
-    </footer>
-
-    <script src="scripts/index.js"></script>
+    <main id="mainContent" tabindex="0"></main>
+    <app-footer copyright="©" year="2024" brand="Warkop Dodayy"></app-footer>
   </body>
 </html>

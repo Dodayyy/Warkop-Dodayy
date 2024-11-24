@@ -1,11 +1,11 @@
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require('path');
 
 module.exports = {
   entry: {
     app: path.resolve(__dirname, 'src/scripts/index.js'),
+    sw: path.resolve(__dirname, 'src/scripts/sw.js'),
   },
   output: {
     filename: '[name].bundle.js',
@@ -14,27 +14,20 @@ module.exports = {
   },
   module: {
     rules: [
-      // CSS Handling
       {
         test: /\.css$/,
         use: [
-          'style-loader', // Menyisipkan CSS ke dalam DOM
-          'css-loader', // Mengonversi CSS ke dalam format CommonJS
-        ],
-      },
-      // SCSS Handling
-      {
-        test: /\.scss$/, // Menangani file .scss
-        use: [
-          'style-loader', // Menyisipkan CSS ke dalam DOM
-          'css-loader', // Mengonversi CSS ke dalam format CommonJS
-          'sass-loader', // Mengonversi SCSS ke CSS
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+          },
         ],
       },
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, 'src/templates/index.html'),

@@ -1,0 +1,41 @@
+{
+  "id": "warkop-dodayy-pwa-1",
+  "start_url": "./index.html",
+  "name": "Warkop Dodayy",
+  "description": "Pesan Sekarang",
+  "display": "standalone",
+  "theme_color": "#D84315",
+  "background_color": "#FFFFFF",
+  "icons": [
+    {
+      "src": "/icons/restaurant-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/restaurant-64x64.png",
+      "sizes": "64x64",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/restaurant-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/restaurant-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/restaurant-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

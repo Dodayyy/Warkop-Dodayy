@@ -1,0 +1,121 @@
+@media screen and (min-width: 768px) {
+  .app-bar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 80px;
+  }
+
+  .app-bar__menu {
+    display: none;
+  }
+
+  .app-bar__brand {
+    text-align: left;
+    flex-grow: 0;
+    padding: 0;
+  }
+
+  .app-bar__brand h1 {
+    font-size: 28px;
+  }
+
+  .app-bar__navigation {
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    padding: 0;
+    box-shadow: none;
+    display: block;
+  }
+
+  .app-bar__navigation ul {
+    display: flex;
+    gap: 32px;
+    margin-left: auto;
+  }
+
+  .app-bar__navigation li {
+    margin: 0;
+  }
+
+  .restaurants {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 0 1.5rem;
+  }
+
+  .restaurant-img {
+    height: 180px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .restaurants {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 0 2rem;
+    max-width: 1200px;
+    margin: 1rem auto 0;
+  }
+
+  .restaurant-img {
+    height: 200px;
+  }
+
+  .detail-hero {
+    height: 60vh;
+  }
+
+  .detail-content {
+    max-width: 1200px;
+    padding: 2.5rem;
+  }
+
+  .reviews-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .hero {
+    background-image: url('../public/heros/hero-image_2.jpg');
+    height: 500px;
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .review-card {
+    margin: 0;
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .reviews-container {
+    padding: 0 1rem;
+    grid-template-columns: 1fr;
+  }
+
+  .review-header {
+    flex-wrap: wrap;
+  }
+
+  .review-avatar {
+    width: 44px;
+    height: 44px;
+  }
+
+  .review-text {
+    font-size: 0.9rem;
+  }
+
+  .customer-review {
+    padding: 1.5rem;
+  }
+}
