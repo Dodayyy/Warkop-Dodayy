@@ -1,5 +1,7 @@
+/* eslint-disable indent */
 import RestaurantSource from '../../data/restaurant-source';
 import { createRestaurantItemTemplate } from '../templates/template-creator';
+import testimoni from '../../../public/data/Testimoni.json';
 
 const Home = {
   currentTestimonialIndex: 0,
@@ -42,7 +44,7 @@ const Home = {
 
         if (!restaurants.length) {
           restaurantsContainer.innerHTML = `
-            <div class="restaurant-item__not__found">
+            <div class="restaurant-item_not_found">
               <i class="fa-solid fa-utensils"></i>
               <p>Tidak ada restoran yang ditemukan</p>
             </div>
@@ -66,12 +68,9 @@ const Home = {
       }
     };
 
-    const renderTestimonials = async () => {
+    const renderTestimonials = () => {
       try {
-        const response = await fetch('/data/testimoni.json');
-        if (!response.ok) throw new Error('Gagal mengambil testimonial');
-
-        const { testimonials } = await response.json();
+        const { testimonials } = testimoni;
 
         const updateTestimonial = () => {
           const testimonial = testimonials[this.currentTestimonialIndex];
@@ -123,7 +122,7 @@ const Home = {
     };
 
     await renderRestaurants();
-    await renderTestimonials();
+    renderTestimonials();
   },
 };
 
