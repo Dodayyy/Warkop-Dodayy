@@ -74,16 +74,16 @@ const createRestaurantDetailTemplate = (restaurant) => {
           <h3><i class="fa-solid fa-utensils"></i> Categories</h3>
           <div class="categories-list">
             ${
-              restaurant.categories
-                ? restaurant.categories
-                    .map(
-                      (category) => `
+  restaurant.categories
+    ? restaurant.categories
+      .map(
+        (category) => `
               <span class="category-tag">${category.name}</span>
             `
-                    )
-                    .join('')
-                : '<span class="category-tag">No categories available</span>'
-            }
+      )
+      .join('')
+    : '<span class="category-tag">No categories available</span>'
+}
           </div>
         </section>
 
@@ -99,32 +99,32 @@ const createRestaurantDetailTemplate = (restaurant) => {
               <h4><i class="fa-solid fa-bowl-food"></i> Foods</h4>
               <ul class="menu-list">
                 ${
-                  restaurant.menus && restaurant.menus.foods
-                    ? restaurant.menus.foods
-                        .map(
-                          (food) => `
+  restaurant.menus && restaurant.menus.foods
+    ? restaurant.menus.foods
+      .map(
+        (food) => `
                   <li>${food.name}</li>
                 `
-                        )
-                        .join('')
-                    : '<li>No food menu available</li>'
-                }
+      )
+      .join('')
+    : '<li>No food menu available</li>'
+}
               </ul>
             </div>
             <div class="menu-column">
               <h4><i class="fa-solid fa-glass-water"></i> Drinks</h4>
               <ul class="menu-list">
                 ${
-                  restaurant.menus && restaurant.menus.drinks
-                    ? restaurant.menus.drinks
-                        .map(
-                          (drink) => `
+  restaurant.menus && restaurant.menus.drinks
+    ? restaurant.menus.drinks
+      .map(
+        (drink) => `
                   <li>${drink.name}</li>
                 `
-                        )
-                        .join('')
-                    : '<li>No drinks menu available</li>'
-                }
+      )
+      .join('')
+    : '<li>No drinks menu available</li>'
+}
               </ul>
             </div>
           </div>
@@ -165,10 +165,10 @@ const createRestaurantDetailTemplate = (restaurant) => {
 
           <div class="reviews-container">
             ${
-              restaurant.customerReviews
-                ? restaurant.customerReviews
-                    .map(
-                      (review) => `
+  restaurant.customerReviews
+    ? restaurant.customerReviews
+      .map(
+        (review) => `
               <div class="review-card">
                 <div class="review-header">
                   <img 
@@ -185,10 +185,10 @@ const createRestaurantDetailTemplate = (restaurant) => {
                 <p class="review-text">${review.review}</p>
               </div>
             `
-                    )
-                    .join('')
-                : '<p>No reviews available</p>'
-            }
+      )
+      .join('')
+    : '<p>No reviews available</p>'
+}
           </div>
         </section>
       </div>
