@@ -3,32 +3,28 @@ class AppFooter extends HTMLElement {
     return ['copyright', 'year', 'brand'];
   }
 
-  constructor() {
-    super();
-  }
-
   get copyright() {
-    return this.getAttribute('copyright') ?? '©';
+    return this.getAttribute('copyright') || '©';
   }
 
   get year() {
-    return this.getAttribute('year') ?? new Date().getFullYear();
+    return this.getAttribute('year') || new Date().getFullYear();
   }
 
   get brand() {
-    return this.getAttribute('brand') ?? 'Warkop Dodayy';
+    return this.getAttribute('brand') || 'Warkop Dodayy';
   }
 
   connectedCallback() {
-    this.updateContent();
+    this.render();
   }
 
-  updateContent() {
+  render() {
     this.innerHTML = `
-      <footer>
-        <p>Copyright ${this.copyright} ${this.year} - ${this.brand}</p>
-      </footer>
-    `;
+        <footer>
+          <p>Copyright ${this.copyright} ${this.year} - ${this.brand}</p>
+        </footer>
+      `;
   }
 }
 

@@ -1,20 +1,18 @@
 const createRestaurantItemTemplate = (restaurant) => {
-  const imgUrl = restaurant.pictureId ? `https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}` : '/images/placeholder-restaurant.jpg';
+  const imgUrl = restaurant.pictureId
+    ? `https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}`
+    : '/images/placeholder-restaurant.jpg';
 
   return `
     <a href="#/detail/${restaurant.id}" class="restaurant-item">
       <img 
-        src="${imgUrl}" 
+        data-src="${imgUrl}" 
         alt="restoran ${restaurant.name}" 
         class="restaurant-img lazyload"
         loading="lazy"
         onerror="this.onerror=null;this.src='/images/placeholder-restaurant.jpg';"
       >
       <div class="restaurant-info">
-      <p class="restaurant-city">
-          <i class="fa-solid fa-location-dot"></i>
-          ${restaurant.city}
-        </p>
         <div class="restaurant-header">
           <h2 class="restaurant-name">${restaurant.name}</h2>
           <div class="restaurant-rating">
@@ -22,7 +20,10 @@ const createRestaurantItemTemplate = (restaurant) => {
             <span>${restaurant.rating}</span>
           </div>
         </div>
-        
+        <p class="restaurant-city">
+          <i class="fa-solid fa-location-dot"></i>
+          ${restaurant.city}
+        </p>
         <p class="restaurant-description">${restaurant.description ? `${restaurant.description.slice(0, 100)}...` : 'No description available'}</p>
       </div>
     </a>
@@ -45,7 +46,9 @@ const createRestaurantDetailTemplate = (restaurant) => {
     `;
   }
 
-  const imgUrl = restaurant.pictureId ? `https://restaurant-api.dicoding.dev/images/large/${restaurant.pictureId}` : '/images/placeholder-restaurant.jpg';
+  const imgUrl = restaurant.pictureId
+    ? `https://restaurant-api.dicoding.dev/images/large/${restaurant.pictureId}`
+    : '/images/placeholder-restaurant.jpg';
 
   return `
     <div class="restaurant-detail">
@@ -73,17 +76,9 @@ const createRestaurantDetailTemplate = (restaurant) => {
         <section class="detail-section">
           <h3><i class="fa-solid fa-utensils"></i> Categories</h3>
           <div class="categories-list">
-            ${
-  restaurant.categories
-    ? restaurant.categories
-      .map(
-        (category) => `
+            ${restaurant.categories ? restaurant.categories.map((category) => `
               <span class="category-tag">${category.name}</span>
-            `
-      )
-      .join('')
-    : '<span class="category-tag">No categories available</span>'
-}
+            `).join('') : '<span class="category-tag">No categories available</span>'}
           </div>
         </section>
 
@@ -98,33 +93,17 @@ const createRestaurantDetailTemplate = (restaurant) => {
             <div class="menu-column">
               <h4><i class="fa-solid fa-bowl-food"></i> Foods</h4>
               <ul class="menu-list">
-                ${
-  restaurant.menus && restaurant.menus.foods
-    ? restaurant.menus.foods
-      .map(
-        (food) => `
+                ${restaurant.menus && restaurant.menus.foods ? restaurant.menus.foods.map((food) => `
                   <li>${food.name}</li>
-                `
-      )
-      .join('')
-    : '<li>No food menu available</li>'
-}
+                `).join('') : '<li>No food menu available</li>'}
               </ul>
             </div>
             <div class="menu-column">
               <h4><i class="fa-solid fa-glass-water"></i> Drinks</h4>
               <ul class="menu-list">
-                ${
-  restaurant.menus && restaurant.menus.drinks
-    ? restaurant.menus.drinks
-      .map(
-        (drink) => `
+                ${restaurant.menus && restaurant.menus.drinks ? restaurant.menus.drinks.map((drink) => `
                   <li>${drink.name}</li>
-                `
-      )
-      .join('')
-    : '<li>No drinks menu available</li>'
-}
+                `).join('') : '<li>No drinks menu available</li>'}
               </ul>
             </div>
           </div>
@@ -164,11 +143,7 @@ const createRestaurantDetailTemplate = (restaurant) => {
           </div>
 
           <div class="reviews-container">
-            ${
-  restaurant.customerReviews
-    ? restaurant.customerReviews
-      .map(
-        (review) => `
+            ${restaurant.customerReviews ? restaurant.customerReviews.map((review) => `
               <div class="review-card">
                 <div class="review-header">
                   <img 
@@ -184,11 +159,7 @@ const createRestaurantDetailTemplate = (restaurant) => {
                 </div>
                 <p class="review-text">${review.review}</p>
               </div>
-            `
-      )
-      .join('')
-    : '<p>No reviews available</p>'
-}
+            `).join('') : '<p>No reviews available</p>'}
           </div>
         </section>
       </div>
@@ -208,4 +179,9 @@ const createLikedButtonTemplate = () => `
   </button>
 `;
 
-export { createRestaurantItemTemplate, createRestaurantDetailTemplate, createLikeButtonTemplate, createLikedButtonTemplate };
+export {
+  createRestaurantItemTemplate,
+  createRestaurantDetailTemplate,
+  createLikeButtonTemplate,
+  createLikedButtonTemplate,
+};

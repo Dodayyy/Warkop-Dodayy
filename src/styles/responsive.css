@@ -1,3 +1,34 @@
+@media screen and (max-width: 480px) {
+  .review-card {
+    margin: 0;
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .reviews-container {
+    padding: 0 1rem;
+    grid-template-columns: 1fr;
+  }
+  
+  .review-header {
+    flex-wrap: wrap;
+  }
+  
+  .review-avatar {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .review-text {
+    font-size: 0.9rem;
+  }
+
+  .customer-review {
+    padding: 1.5rem;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .app-bar-container {
     max-width: 1200px;
@@ -79,43 +110,16 @@
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (max-width: 768px) {
   .hero {
-    background-image: url('../public/heros/hero-image_2.jpg');
-    height: 500px;
-    width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    background-image: url('../public/heros/hero-image_2-small.jpg');
+    height: 300px;
   }
 }
 
-@media screen and (max-width: 480px) {
-  .review-card {
-    margin: 0;
-    padding: 1rem;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .reviews-container {
-    padding: 0 1rem;
-    grid-template-columns: 1fr;
-  }
-
-  .review-header {
-    flex-wrap: wrap;
-  }
-
-  .review-avatar {
-    width: 44px;
-    height: 44px;
-  }
-
-  .review-text {
-    font-size: 0.9rem;
-  }
-
-  .customer-review {
-    padding: 1.5rem;
+@media screen and (min-width: 769px) {
+  .hero {
+    background-image: url('../public/heros/hero-image_2-large.jpg');
+    height: 500px;
   }
 }

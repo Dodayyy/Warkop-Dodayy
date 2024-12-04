@@ -17,86 +17,92 @@ const Detail = {
   },
 
   async afterRender() {
-    const initializeSkipLink = () => {
-      const skipLinkElem = document.querySelector('.skip-link');
-      if (skipLinkElem) {
-        skipLinkElem.addEventListener('click', (event) => {
-          event.preventDefault();
-          const mainContent = document.querySelector('#mainContent');
-          if (mainContent) {
-            mainContent.focus();
-            mainContent.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-      }
-    };
+    const skipLinkElem = document.querySelector('.skip-link');
+    if (skipLinkElem) {
+      skipLinkElem.addEventListener('click', (event) => {
+        event.preventDefault();
+        const mainContent = document.querySelector('#mainContent');
+        if (mainContent) {
+          mainContent.focus();
+          mainContent.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
 
-    initializeSkipLink();
     window.scrollTo({ top: 0 });
-
     try {
       const restaurantContainer = document.querySelector('#restaurant');
       const likeButtonContainer = document.querySelector('#likeButtonContainer');
       const url = UrlParser.parseActiveUrlWithoutCombiner();
       const restaurant = await RestaurantSource.detail(url.id);
 
-      if (!restaurant) throw new Error('Restaurant not found');
+      if (restaurant) {
+        restaurantContainer.innerHTML = createRestaurantDetailTemplate(restaurant);
 
-      restaurantContainer.innerHTML = createRestaurantDetailTemplate(restaurant);
+        const reviewForm = document.querySelector('#reviewForm');
+        if (reviewForm) {
+          reviewForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const reviewData = {
+              id: url.id,
+              name: document.querySelector('#reviewName').value,
+              review: document.querySelector('#reviewText').value,
+            };
 
-      const reviewForm = document.querySelector('#reviewForm');
-      if (reviewForm) {
-        reviewForm.addEventListener('submit', async (event) => {
-          event.preventDefault();
-          const reviewData = {
-            id: url.id,
-            name: document.querySelector('#reviewName').value,
-            review: document.querySelector('#reviewText').value,
-          };
-
-          try {
-            const response = await RestaurantSource.postReview(reviewData);
-            const reviewsContainer = document.querySelector('.reviews-container');
-            reviewsContainer.innerHTML = response.customerReviews
-              .map(
-                (review) => `
-                  <div class="review-card">
-                    <div class="review-header">
-                      <img 
-                        src="https://ui-avatars.com/api/?name=${review.name}&background=random" 
-                        alt="${review.name}"
-                        class="review-avatar"
-                      >
-                      <div class="review-info">
-                        <p class="review-name">${review.name}</p>
-                        <p class="review-date">${review.date}</p>
-                      </div>
+            try {
+              const response = await RestaurantSource.postReview(reviewData);
+              const reviewsContainer = document.querySelector('.reviews-container');
+              reviewsContainer.innerHTML = response.customerReviews.map((review) => `
+                <div class="review-card">
+                  <div class="review-header">
+                    <img 
+                      src="https://ui-avatars.com/api/?name=${review.name}&background=random" 
+                      alt="${review.name}"
+                      class="review-avatar"
+                    >
+                    <div class="review-info">
+                      <p class="review-name">${review.name}</p>
+                      <p class="review-date">${review.date}</p>
                     </div>
-                    <p class="review-text">${review.review}</p>
                   </div>
-                `
-              )
-              .join('');
+                  <p class="review-text">${review.review}</p>
+                </div>
+              `).join('');
 
-            reviewForm.reset();
-          } catch (error) {
-            console.error('Review Error:', error);
-            alert('Failed to submit review. Please try again.');
-          }
+              reviewForm.reset();
+            } catch (error) {
+              console.error('Review Error:', error);
+              alert('Failed to submit review. Please try again.');
+            }
+          });
+        }
+
+        await LikeButtonInitiator.init({
+          likeButtonContainer,
+          restaurant: {
+            id: restaurant.id,
+            name: restaurant.name,
+            description: restaurant.description,
+            pictureId: restaurant.pictureId,
+            rating: restaurant.rating,
+            city: restaurant.city,
+          },
         });
-      }
 
-      await LikeButtonInitiator.init({
-        likeButtonContainer,
-        restaurant: {
-          id: restaurant.id,
-          name: restaurant.name,
-          description: restaurant.description,
-          pictureId: restaurant.pictureId,
-          rating: restaurant.rating,
-          city: restaurant.city,
-        },
-      });
+        const skipLink = document.querySelector('.skip-link');
+        if (skipLink) {
+          skipLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            const mainContent = document.querySelector('#mainContent');
+            if (mainContent) {
+              mainContent.focus();
+              mainContent.scrollIntoView({ behavior: 'smooth' });
+            }
+          });
+        }
+      } else {
+        throw new Error('Restaurant not found');
+      }
     } catch (error) {
       console.error('Error:', error);
       const restaurantContainer = document.querySelector('#restaurant');
@@ -104,7 +110,7 @@ const Detail = {
         <div class="error">
           <i class="fa-solid fa-triangle-exclamation"></i>
           <p>Failed to load restaurant detail</p>
-          <p>${error.message || 'Please check your connection and try again.'}</p>
+          <p>${error.message || 'Please check your connection and try again'}</p>
           <button class="error-button" onclick="location.reload()">
             <i class="fa-solid fa-rotate"></i> Retry
           </button>
