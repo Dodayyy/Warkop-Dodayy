@@ -5,21 +5,21 @@
     width: 100%;
     box-sizing: border-box;
   }
-  
+
   .reviews-container {
     padding: 0 1rem;
     grid-template-columns: 1fr;
   }
-  
+
   .review-header {
     flex-wrap: wrap;
   }
-  
+
   .review-avatar {
     width: 44px;
     height: 44px;
   }
-  
+
   .review-text {
     font-size: 0.9rem;
   }

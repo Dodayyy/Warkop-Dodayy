@@ -5,7 +5,7 @@ describe('Unliking A Restaurant', () => {
   const createLikeButtonPresenterWithRestaurant = async (restaurant) => {
     await LikeButtonInitiator.init({
       likeButtonContainer: document.querySelector('#likeButtonContainer'),
-    restaurant,
+      restaurant,
     });
   };
 
@@ -22,12 +22,11 @@ describe('Unliking A Restaurant', () => {
       id: 1,
       name: 'Test Restaurant',
     };
-    
+
     await FavoriteRestaurantIdb.putRestaurant(restaurant);
     await createLikeButtonPresenterWithRestaurant(restaurant);
 
-    expect(document.querySelector('[aria-label="unlike this restaurant"]'))
-      .toBeTruthy();
+    expect(document.querySelector('[aria-label="unlike this restaurant"]')).toBeTruthy();
   });
 
   it('should not display like widget when the restaurant has been liked', async () => {
@@ -35,12 +34,11 @@ describe('Unliking A Restaurant', () => {
       id: 1,
       name: 'Test Restaurant',
     };
-    
+
     await FavoriteRestaurantIdb.putRestaurant(restaurant);
     await createLikeButtonPresenterWithRestaurant(restaurant);
 
-    expect(document.querySelector('[aria-label="like this restaurant"]'))
-      .toBeFalsy();
+    expect(document.querySelector('[aria-label="like this restaurant"]')).toBeFalsy();
   });
 
   it('should be able to remove liked restaurant from the list', async () => {
@@ -48,12 +46,12 @@ describe('Unliking A Restaurant', () => {
       id: 1,
       name: 'Test Restaurant',
     };
-    
+
     await FavoriteRestaurantIdb.putRestaurant(restaurant);
     await createLikeButtonPresenterWithRestaurant(restaurant);
 
     document.querySelector('[aria-label="unlike this restaurant"]').dispatchEvent(new Event('click'));
-    
+
     const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
     expect(restaurants).toHaveLength(0);
   });
@@ -65,19 +63,19 @@ describe('Unliking A Restaurant', () => {
     };
 
     await createLikeButtonPresenterWithRestaurant(restaurant);
-    
+
     expect(document.querySelector('[aria-label="like this restaurant"]')).toBeTruthy();
-    
+
     document.querySelector('#likeButton').dispatchEvent(new Event('click'));
-    
+
     expect(await FavoriteRestaurantIdb.getRestaurant(1)).toBeTruthy();
-    
+
     await FavoriteRestaurantIdb.deleteRestaurant(1);
-    
+
     expect(await FavoriteRestaurantIdb.getRestaurant(1)).toBeFalsy();
-    
+
     document.querySelector('#likeButton').dispatchEvent(new Event('click'));
-    
+
     const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
     expect(restaurants).toHaveLength(0);
   });

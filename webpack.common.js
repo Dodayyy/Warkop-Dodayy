@@ -1,8 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
-const ImageminMozjpeg = require('imagemin-mozjpeg');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -10,7 +8,6 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 module.exports = {
   entry: {
     app: path.resolve(__dirname, 'src/scripts/index.js'),
-    sw: path.resolve(__dirname, 'src/scripts/sw.js'),
   },
   output: {
     filename: '[name].bundle.js',
@@ -57,38 +54,18 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, 'src/templates/index.html'),
     }),
-
     new CopyWebpackPlugin({
       patterns: [
         {
           from: path.resolve(__dirname, 'src/public/'),
           to: path.resolve(__dirname, 'dist/'),
-          globOptions: {
-            ignore: ['**/heros/**'],
-          },
-        },
-        {
-          from: path.resolve(__dirname, 'src/public/heros/'),
-          to: path.resolve(__dirname, 'dist/heros/'),
         },
       ],
     }),
-
-    new ImageminWebpackPlugin({
-      plugins: [
-        ImageminMozjpeg({
-          quality: 20,
-          progressive: true,
-        }),
-      ],
-      test: /\.jpe?g$/,
-    }),
-
     new WorkboxWebpackPlugin.GenerateSW({
       swDest: './sw.bundle.js',
       runtimeCaching: [
@@ -129,7 +106,10 @@ module.exports = {
         },
       ],
     }),
-
-    new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      analyzerPort: 8888,
+      openAnalyzer: false,
+    }),
   ],
 };
